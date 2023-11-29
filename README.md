@@ -1,22 +1,20 @@
----
-languages:
-- csharp
-products:
-- dotnet
-- dotnet-aspire
-page_type: sample
-name: ".NET Aspire dapr sample app"
-urlFragment: "aspire-dapr"
-description: "A sample .NET Aspire app that shows how to use dapr"
----
+# .NET Aspire dapr sample app with Executable
 
-# .NET Aspire dapr sample app
+This is a clone of the AspireWithDapr sample with minor changes:
 
-This is a simple .NET app that shows how to use Dapr with .NET Aspire orchestration.
+- Update NuGet Packages
+- A change in AspireWithDapr.AppHost Program.cs to use AddExecutable for the APIService.
+
+Imagine the APIService is managed by a different group and they don't
+want to share the source code. They just want us (the WebFrontEnd group)
+to use their executable.
+
+Simple, instead of calling AddProject, we call AddExecutable but, even though we added
+.WithDapSidecar, the APIService Dapr Sidecar is not started and we can't call the API.
 
 ## Demonstrates
 
-- How to configure a .NET Aspire app to work with Dapr
+- A problem using WithDaprSidecar with AddExecutable.
 
 ## Sample prerequisites
 
