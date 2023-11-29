@@ -20,6 +20,8 @@ builder.AddDapr();
 var apiServiceCommand = Path.GetFullPath("../AspireWithDapr.ApiService/bin/Debug/net8.0/AspireWithDapr.ApiService.exe");
 var apiServiceWorkingDirectory = Path.GetFullPath("../AspireWithDapr.ApiService/bin/Debug/net8.0/");
 builder.AddExecutable("apiservice", apiServiceCommand, apiServiceWorkingDirectory, [])
+       .WithEnvironment("ASPNETCORE_URLS", "http://localhost:54321")
+       .WithServiceBinding(54321, "http")
        .WithDaprSidecar("api");
 
 // End of changes
